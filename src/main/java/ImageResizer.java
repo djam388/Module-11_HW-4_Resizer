@@ -55,6 +55,9 @@ public class ImageResizer extends Thread
         catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println( "Thread number: " + threadNumber + " ->> Duration: " + (System.currentTimeMillis() - start + " ms."));
+        //System.out.println( "Thread number: " + threadNumber + " ->> Duration: " + (System.currentTimeMillis() - start + " ms."));
+        System.out.println( "Thread number: " + threadNumber
+                + " ->> Resized files number: " + files.length
+                + " ->> Duration: " + (System.currentTimeMillis() - start + " ms."));
     }
 }

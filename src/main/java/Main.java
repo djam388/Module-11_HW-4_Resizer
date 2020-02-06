@@ -24,6 +24,13 @@ public class Main
         {
             for (int i = 0; i < processors; i++)
             {
+                if (i == processors -1)
+                {
+                    if ((files.length % processors) != 0 && (files.length / processors) > 1)
+                    {
+                        loops += (files.length % processors);
+                    }
+                }
                 startCopy(files, position, loops, dstFolder, start, threadNumber);
                 position += loops;
                 threadNumber += 1;
@@ -32,12 +39,6 @@ public class Main
         else
         {
             startCopy(files, 0, files.length, dstFolder, start, 1);
-        }
-
-
-        if ((files.length % processors) != 0 && (files.length / processors) > 1)
-        {
-            startCopy(files, position, (files.length % processors), dstFolder, start, threadNumber);
         }
 
         System.out.println("CPU cores: " + processors);
